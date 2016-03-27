@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xls2xml:xls2xml xmlns:xls2xml="http://www.randalf.mx/converterXls2Xml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.randalf.mx/converterXls2Xml converterXls2Xml.xsd ">
+  <xls2xml:parameter>
+    <xls2xml:pathImageMagick>/opt/local/bin</xls2xml:pathImageMagick>
+    <xls2xml:nThread>100</xls2xml:nThread>
+    <xls2xml:tSleep>5000</xls2xml:tSleep>
+    <xls2xml:tSleepClosed>10000</xls2xml:tSleepClosed>
+  </xls2xml:parameter>
+  <xls2xml:input>
+    <xls2xml:formatoFile tipo="tsv" primaRiga="1"/>
+    <xls2xml:path>/Users/massi/temp/Piombino/tsv</xls2xml:path>
+    <xls2xml:image>
+      <xls2xml:path>/mnt/volume2/Metis/Piombino/La Nazione/Anno 1968</xls2xml:path>
+      <xls2xml:formatoImg formato="tif"  decimalFormat="0000"/>
+    </xls2xml:image>
+
+  </xls2xml:input>
+  <xls2xml:output>
+    <xls2xml:typeFileOutput>mag</xls2xml:typeFileOutput>
+    <xls2xml:path>/mnt/volume1/Piombino</xls2xml:path>
+    <xls2xml:cartella>8</xls2xml:cartella>
+    <xls2xml:gen>
+      <xls2xml:stprog>http://www.comune.piombino.li.it/pagina666_biblioteche.html</xls2xml:stprog>
+      <xls2xml:agency>http://www.comune.piombino.li.it/pagina666_biblioteche.html</xls2xml:agency>
+      <xls2xml:access_rights>1</xls2xml:access_rights>
+      <xls2xml:completeness>0</xls2xml:completeness>
+    </xls2xml:gen>
+    <xls2xml:bib>
+      <xls2xml:key>
+        <xls2xml:dati>
+          <xls2xml:colonna>0</xls2xml:colonna>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="0000">13</xls2xml:colonna>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="00">12</xls2xml:colonna>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="00">11</xls2xml:colonna>
+        </xls2xml:dati>
+      </xls2xml:key>
+      <xls2xml:campo tipo="bid">
+        <xls2xml:dati>
+          <xls2xml:colonna>0</xls2xml:colonna>
+        </xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="natura">
+        <xls2xml:dati><xls2xml:default>s</xls2xml:default></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="titolo">
+        <xls2xml:dati><xls2xml:default>La nazione</xls2xml:default></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="pubblicazione">
+        <xls2xml:dati><xls2xml:default>[Ed.] Livorno, Portoferraio, Piombino.</xls2xml:default></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="collocazione">
+        <xls2xml:dati><xls2xml:default>Ga.2.165</xls2xml:default></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="year">
+        <xls2xml:dati><xls2xml:colonna>13</xls2xml:colonna></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="issue">
+        <xls2xml:dati><xls2xml:colonna converter="mese" suffix=" ">12</xls2xml:colonna></xls2xml:dati>
+        <xls2xml:dati><xls2xml:colonna decimalFormat="00">11</xls2xml:colonna></xls2xml:dati>
+      </xls2xml:campo>
+      <xls2xml:campo tipo="stpiece_per">
+        <xls2xml:dati><xls2xml:default>(</xls2xml:default></xls2xml:dati>
+        <xls2xml:dati><xls2xml:colonna decimalFormat="0000">13</xls2xml:colonna></xls2xml:dati>
+        <xls2xml:dati><xls2xml:colonna decimalFormat="00">12</xls2xml:colonna></xls2xml:dati>
+        <xls2xml:dati><xls2xml:colonna decimalFormat="00">11</xls2xml:colonna></xls2xml:dati>
+        <xls2xml:dati><xls2xml:default>)</xls2xml:default></xls2xml:dati>
+      </xls2xml:campo>
+    </xls2xml:bib>
+    <xls2xml:xml>
+      <xls2xml:folder>
+        <xls2xml:dati>
+          <xls2xml:default>La Nazione</xls2xml:default>
+        </xls2xml:dati>
+      </xls2xml:folder>
+      <xls2xml:folder>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="0000">13</xls2xml:colonna>
+        </xls2xml:dati>
+      </xls2xml:folder>
+      <xls2xml:folder>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="00">12</xls2xml:colonna>
+        </xls2xml:dati>
+      </xls2xml:folder>
+      <xls2xml:fileName extension="xml">
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="0000">13</xls2xml:colonna>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="00">12</xls2xml:colonna>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:colonna decimalFormat="00">11</xls2xml:colonna>
+        </xls2xml:dati>
+      </xls2xml:fileName>
+    </xls2xml:xml>
+    <xls2xml:images>
+      <xls2xml:nomenclatura>
+        <xls2xml:dati>
+          <xls2xml:default>Pagina: </xls2xml:default>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:campo tipo="numPagina"/>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:default> </xls2xml:default>
+        </xls2xml:dati>
+        <xls2xml:dati>
+          <xls2xml:campo tipo="cronaca"/>
+        </xls2xml:dati>
+      </xls2xml:nomenclatura>
+      <xls2xml:image>
+        <xls2xml:path>Archivio</xls2xml:path>
+        <xls2xml:formatoImg formato="tif" decimalFormat="0000"/>
+        <xls2xml:usage>1</xls2xml:usage>
+      </xls2xml:image>
+      <xls2xml:image>
+        <xls2xml:path>Internet</xls2xml:path>
+        <xls2xml:formatoImg formato="jpg" decimalFormat="0000"/>
+        <xls2xml:usage>2</xls2xml:usage>
+        <xls2xml:converter>
+          <xls2xml:ppi>150</xls2xml:ppi>
+          <xls2xml:width>0</xls2xml:width>
+          <xls2xml:height>0</xls2xml:height>
+          <xls2xml:quality>60</xls2xml:quality>
+        </xls2xml:converter>
+      </xls2xml:image>
+      <xls2xml:image>
+        <xls2xml:path>Intranet</xls2xml:path>
+        <xls2xml:formatoImg formato="jpg" decimalFormat="0000"/>
+        <xls2xml:usage>3</xls2xml:usage>
+        <xls2xml:converter>
+          <xls2xml:ppi>300</xls2xml:ppi>
+          <xls2xml:width>0</xls2xml:width>
+          <xls2xml:height>0</xls2xml:height>
+          <xls2xml:quality>60</xls2xml:quality>
+        </xls2xml:converter>
+      </xls2xml:image>
+    </xls2xml:images>
+    <xls2xml:pagine>
+      <xls2xml:start>14</xls2xml:start>
+      <xls2xml:stop>15</xls2xml:stop>
+    </xls2xml:pagine>
+    <xls2xml:pagInizio>17</xls2xml:pagInizio>
+  </xls2xml:output>
+</xls2xml:xls2xml>

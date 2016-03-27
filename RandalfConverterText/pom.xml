@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mx.randalf.converter.text</groupId>
+	<artifactId>RandalfConverterText</artifactId>
+	<description>Progetto utilizzato per la convertione dei testi</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+<!--
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>sftp-repository-stable</id>
+			<url>scpexe://maven.bncf.lan/var/www/maven.bncf.lan/repository/release</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>randalf.mx-release</id>
+			<url>http://maven.bncf.lan/repository/release</url>
+		</repository>
+	</repositories>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
+				<version>1.0-beta-6</version>
+			</extension>
+		</extensions>
+	</build>
+-->
+	<dependencies>
+		<dependency>
+			<groupId>mx.randalf.interfacException</groupId>
+			<artifactId>RandalfInterfaceException</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+	</dependencies>
+  <distributionManagement>
+    <repository>
+        <id>mvn-bncf</id>
+        <name>Maven BNCF-releases</name>
+        <url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release-local</url>
+    </repository>
+</distributionManagement>
+	<repositories>
+		<repository>
+			<id>bncf</id>
+			<url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<parent>
+		<groupId>mx.randalf.converter</groupId>
+		<artifactId>RandalfConverter</artifactId>
+		<version>1.0.0</version>
+	</parent>
+</project>

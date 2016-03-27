@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.randalf.mx/converterXls2Xml" elementFormDefault="qualified"
+    xmlns:xls2xml="http://www.randalf.mx/converterXls2Xml">
+    <element name="xls2xml">
+        <complexType>
+            <sequence>
+                <element ref="xls2xml:parameter"/>
+                <element maxOccurs="unbounded" ref="xls2xml:input"/>
+                <element ref="xls2xml:output"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="parameter">
+        <annotation>
+            <documentation xml:lang="it">Lista delle informaziioni per la parametrizzazione dell'applicativo</documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="pathImageMagick" type="string">
+                    <annotation>
+                        <documentation xml:lang="it">percorso assoluto in cui è stato indtallato il Software ImageMagick</documentation>
+                    </annotation>
+                </element>
+                <element default="10" name="nThread" type="integer">
+                    <annotation>
+                        <documentation xml:lang="it">Numero massimo di Thread contemporanei lanciati dal programma</documentation>
+                    </annotation>
+                </element>
+                <element default="1000" name="tSleep" type="integer">
+                    <annotation>
+                        <documentation xml:lang="it">Tempo in milliseconti per la verifica dello stato dei Thread lanciati</documentation>
+                    </annotation>
+                </element>
+                <element default="60000" minOccurs="0" name="tSleepClosed" type="integer">
+                    <annotation>
+                        <documentation xml:lang="it">Tempo in millisecondi di attesa per la procedura di verifica del termine dell'elaborazione di tutti i thread</documentation>
+                    </annotation>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="input">
+        <annotation>
+            <documentation xml:lang="it">Lista delle materiale da analizzare in Input</documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="formatoFile">
+                    <complexType>
+                        <attribute name="tipo" use="required">
+                            <simpleType>
+                                <restriction base="string">
+                                    <enumeration value="xls"/>
+                                    <enumeration value="csv"/>
+                                    <enumeration value="tsv"/>
+                                </restriction>
+                            </simpleType>
+                        </attribute>
+                        <attribute default="0" name="primaRiga" type="nonNegativeInteger"
+                            use="optional"/>
+                    </complexType>
+                </element>
+                <element ref="xls2xml:path"/>
+                <element name="image">
+                    <annotation>
+                        <documentation xml:lang="it">Indica le informazioni relative alla posizione delle immagini</documentation>
+                    </annotation>
+                    <complexType>
+                        <sequence>
+                            <element ref="xls2xml:path"/>
+                            <element ref="xls2xml:formatoImg"/>
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="output">
+        <annotation>
+            <documentation xml:lang="it">Lista delle informazioni per la generazione del materiale in output</documentation>
+        </annotation>
+        <complexType>
+            <sequence>
+                <element name="typeFileOutput">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="mag"/>
+                            <enumeration value="mets"/>
+                        </restriction>
+                    </simpleType>
+                </element>
+                <element ref="xls2xml:path"/>
+                <element name="cartella" type="integer"/>
+                <element name="gen">
+                    <complexType>
+                        <sequence>
+                            <element name="stprog" type="anyURI"/>
+                            <element minOccurs="0" name="collection" type="anyURI"/>
+                            <element name="agency" type="string"/>
+                            <element default="1" name="access_rights">
+                                <simpleType>
+                                    <restriction base="integer">
+                                        <pattern value="0">
+                                            <annotation>
+                                                <documentation xml:lang="it">uso riservato all'interno dell'istituzione</documentation>
+                                            </annotation>
+                                        </pattern>
+                                        <pattern value="1">
+                                            <annotation>
+                                                <documentation xml:lang="it">uso pubblico</documentation>
+                                            </annotation>
+                                        </pattern>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                            <element default="0" name="completeness">
+                                <simpleType>
+                                    <restriction base="integer">
+                                        <pattern value="0">
+                                            <annotation>
+                                                <documentation xml:lang="it">digitalizzazione completa</documentation>
+                                            </annotation>
+                                        </pattern>
+                                        <pattern value="1">
+                                            <annotation>
+                                                <documentation xml:lang="it">digitalizzazione parziale</documentation>
+                                            </annotation>
+                                        </pattern>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="bib">
+                    <complexType>
+                        <sequence>
+                            <element name="key">
+                                <complexType>
+                                    <sequence>
+                                        <element maxOccurs="unbounded" ref="xls2xml:dati"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <sequence maxOccurs="unbounded">
+                                <element name="campo">
+                                    <complexType>
+                                        <sequence>
+                                            <element ref="xls2xml:dati" maxOccurs="unbounded"/>
+                                        </sequence>
+                                        <attribute name="tipo" use="required">
+                                            <simpleType>
+                                                <restriction base="string">
+                                                  <enumeration value="bid"/>
+                                                  <enumeration value="natura"/>
+                                                  <enumeration value="autore"/>
+                                                  <enumeration value="titolo"/>
+                                                  <enumeration value="pubblicazione"/>
+                                                  <enumeration value="biblioteca"/>
+                                                  <enumeration value="collocazione"/>
+                                                  <enumeration value="inventario"/>
+                                                  <enumeration value="annata"/>
+                                                  <enumeration value="numero"/>
+                                                  <enumeration value="giorno"/>
+                                                  <enumeration value="mese"/>
+                                                  <enumeration value="anno"/>
+                                                  <enumeration value="cronaca"/>
+                                                  <enumeration value="year"/>
+                                                  <enumeration value="issue"/>
+                                                  <enumeration value="stpiece_per"/>
+                                                  <enumeration value="part_number"/>
+                                                  <enumeration value="part_name"/>
+                                                  <enumeration value="stpiece_vol"/>
+                                                </restriction>
+                                            </simpleType>
+                                        </attribute>
+                                    </complexType>
+                                </element>
+                            </sequence>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="xml">
+                    <complexType>
+                        <sequence>
+                            <element maxOccurs="unbounded" name="folder">
+                                <complexType>
+                                    <sequence maxOccurs="unbounded">
+                                        <element ref="xls2xml:dati"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <element name="fileName">
+                                <complexType>
+                                    <sequence maxOccurs="unbounded">
+                                        <element ref="xls2xml:dati"/>
+                                    </sequence>
+                                    <attribute name="extension" use="required"/>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="images">
+                    <complexType>
+                        <sequence>
+                            <element name="nomenclatura">
+                                <complexType>
+                                    <sequence>
+                                        <element maxOccurs="unbounded" ref="xls2xml:dati"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                            <element maxOccurs="unbounded" name="image">
+                                <complexType>
+                                    <sequence>
+                                        <element ref="xls2xml:path"/>
+                                        <element ref="xls2xml:formatoImg"/>
+                                        <element minOccurs="1" name="usage">
+                                            <simpleType>
+                                                <restriction base="string">
+                                                  <enumeration value="1">
+                                                  <annotation>
+                                                  <documentation xml:lang="it">Archivio</documentation>
+                                                  </annotation>
+                                                  </enumeration>
+                                                  <enumeration value="2"/>
+                                                  <enumeration value="3"/>
+                                                  <enumeration value="4"/>
+                                                </restriction>
+                                            </simpleType>
+                                        </element>
+                                        <element minOccurs="0" name="converter">
+                                            <complexType>
+                                                <sequence>
+                                                  <element name="ppi" type="int"/>
+                                                  <element default="0" name="width" type="int"/>
+                                                  <element default="0" name="height" type="int"/>
+                                                  <element default="60" name="quality" type="double"/>
+                                                  <element minOccurs="0" name="resize" type="int"/>
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+                <choice>
+                    <element name="pagine">
+                        <complexType>
+                            <sequence>
+                                <element name="start" type="integer"/>
+                                <element name="stop" type="integer"/>
+                            </sequence>
+                        </complexType>
+                    </element>
+                    <element name="pagina" type="integer"/>
+                </choice>
+                <element minOccurs="0" name="pagInizio" type="integer"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="path" type="string">
+        <annotation>
+            <documentation xml:lang="it">Path dell'oggetto
+</documentation>
+        </annotation>
+    </element>
+    <element name="formatoImg">
+        <annotation>
+            <documentation xml:lang="it">Indica il formato dell'immagine</documentation>
+        </annotation>
+        <complexType>
+            <attribute name="formato" use="required">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="tif"/>
+                        <enumeration value="jpg"/>
+                        <enumeration value="pdf"/>
+                    </restriction>
+                </simpleType>
+            </attribute>
+            <attributeGroup ref="xls2xml:gFormat"/>
+        </complexType>
+    </element>
+    <element name="dati">
+        <complexType>
+            <choice>
+                <element name="default" type="string"/>
+                <element name="colonna">
+                    <complexType>
+                        <simpleContent>
+                            <extension base="nonNegativeInteger">
+                                <attributeGroup ref="xls2xml:gFormat"/>
+                            </extension>
+                        </simpleContent>
+                    </complexType>
+                </element>
+                <element name="campo">
+                    <complexType>
+                        <attribute name="tipo" use="required">
+                            <simpleType>
+                                <restriction base="string">
+                                    <enumeration value="numPagina"/>
+                                    <enumeration value="rectoVerso"/>
+                                    <enumeration value="numPaginaRomano"/>
+                                    <enumeration value="cronaca"/>
+                                </restriction>
+                            </simpleType>
+                        </attribute>
+                        <attributeGroup ref="xls2xml:gFormat"/>
+                    </complexType>
+                </element>
+            </choice>
+        </complexType>
+    </element>
+    <attributeGroup name="gFormat">
+        <attribute name="decimalFormat" type="string"/>
+        <attribute name="converter">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="mese">
+                        <annotation>
+                            <documentation xml:lang="it">Converte il mese dal numero al corrispondente in formato stringa</documentation>
+                        </annotation>
+                    </enumeration>
+                    <enumeration value="romano">
+                        <annotation>
+                            <documentation xml:lang="it">Converte il testo dal formato Romano in Arabo</documentation>
+                        </annotation>
+                    </enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="prefix" type="string"/>
+        <attribute name="suffix" type="string"/>
+    </attributeGroup>
+</schema>
