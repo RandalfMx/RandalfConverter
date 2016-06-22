@@ -35,5 +35,15 @@
 			<artifactId>RandalfMag</artifactId>
 			<version>1.0.12</version>
 		</dependency>
+		<dependency>
+			<groupId>mx.randalf.configuration</groupId>
+			<artifactId>RandalfConfiguration</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.teca2015.tecaPublished.standAlone</groupId>
+			<artifactId>TecaPublishStandAlone</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 </project>
