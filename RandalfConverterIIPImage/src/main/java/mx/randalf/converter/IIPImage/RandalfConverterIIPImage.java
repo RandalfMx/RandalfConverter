@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 import java.util.UUID;
 import java.util.Vector;
 
+import org.im4java.core.ConvertCmd;
+import org.im4java.core.IM4JavaException;
+import org.im4java.core.IMOperation;
+
 import mx.randalf.converter.IIPImage.exception.RandalfConverterIIPImageException;
 
 public class RandalfConverterIIPImage {
@@ -14,6 +18,12 @@ public class RandalfConverterIIPImage {
 	private File batchConversione = null;
 
 	private File pathTmp = null;
+
+	private String pathImageMagick = null;
+
+	public RandalfConverterIIPImage(String pathImageMagick){
+		this.pathImageMagick = pathImageMagick;
+	}
 
 	public RandalfConverterIIPImage(File batchConversione, File pathTmp) {
 		this.batchConversione = batchConversione;
@@ -29,6 +39,14 @@ public class RandalfConverterIIPImage {
 	 * @throws RandalfConverterIIPImageException
 	 */
 	public  boolean convertImg(File imgInput, File imgOutput) throws RandalfConverterIIPImageException {
+		if (pathImageMagick != null){
+			return convertImgLibrary(imgInput, imgOutput);
+		} else {
+			return convertImgBatch(imgInput, imgOutput);
+		}
+	}
+
+	private boolean convertImgBatch(File imgInput, File imgOutput) throws RandalfConverterIIPImageException {
 		Runtime runtime = null;
 		String[] cmdarray = null;
 		Process process = null;
@@ -60,7 +78,7 @@ public class RandalfConverterIIPImage {
 
 				cmd = "";
 				for (int x=0;x<cmdarray.length; x++){
-					cmd += (cmd.equals("")?"":" ")+cmdarray[x];
+					cmd += (cmd.equals("")?"":" ")+cmdarray[x].replace(" ", "\\ ");
 				}
 				
 //				System.out.println("CMD: "+cmd);
@@ -102,7 +120,43 @@ public class RandalfConverterIIPImage {
 		}
 		return result;
 	}
-//
+
+	private boolean  convertImgLibrary(File imgInput, File imgOutput) throws RandalfConverterIIPImageException{
+		ConvertCmd convertCmd = null;
+		IMOperation imo = null;
+		boolean result = false;
+		
+		try {
+			if (imgInput.exists()){
+				if (!imgOutput.getParentFile().exists()){
+					if (!imgOutput.getParentFile().mkdirs()){
+						throw new RandalfConverterIIPImageException("Impossibile creare la cartella ["+imgInput.getAbsolutePath()+"]");
+					}
+				}
+				convertCmd = new ConvertCmd();
+				convertCmd.setSearchPath(pathImageMagick);
+	
+				imo = new IMOperation();
+				
+				imo.addImage(imgInput.getAbsolutePath());
+				imo.define("tiff:tile-geometry=256x256");
+				imo.compress("jpeg");
+				imo.addImage("ptif:"+imgOutput.getAbsolutePath());
+				convertCmd.run(imo);
+				result = true;
+			} else {
+				throw new RandalfConverterIIPImageException("Il file ["+imgInput.getAbsolutePath()+"] non esiste");
+			}
+		} catch (IOException e) {
+			throw new RandalfConverterIIPImageException(e.getMessage(), e);
+		} catch (InterruptedException e) {
+			throw new RandalfConverterIIPImageException(e.getMessage(), e);
+		} catch (IM4JavaException e) {
+			throw new RandalfConverterIIPImageException(e.getMessage(), e);
+		}
+		return result;
+	}
+	//
 //	public void convertMag(File fMag){
 //		convertMag(fMag, "IIPImage", null);
 //	}
