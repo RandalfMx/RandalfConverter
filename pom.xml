@@ -5,12 +5,16 @@
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <modules>
-  	
-  	
-  	
   	<module>RandalfConverterIIPImage</module>
   	<module>RandalfConverterText</module>
   	<module>RandalfConverterXls2Xml</module>
   	<module>RandalfConverterXsl</module>
   </modules>
+    <distributionManagement>
+    <repository>
+        <id>mvn-bncf</id>
+        <name>Maven BNCF-releases</name>
+        <url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release-local</url>
+    </repository>
+</distributionManagement>	
 </project>

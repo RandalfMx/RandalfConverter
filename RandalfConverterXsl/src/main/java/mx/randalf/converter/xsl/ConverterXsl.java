@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -18,6 +19,9 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.log4j.Logger;
+
+import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
+import com.sun.org.apache.xerces.internal.parsers.XML11Configuration;
 
 import mx.randalf.converter.xsl.exception.ConvertXslException;
 
@@ -130,7 +134,6 @@ public class ConverterXsl
 				transFac = TransformerFactory.newInstance();
 //				transFac = new net.sf.saxon.TransformerFactoryImpl();
 				trans = transFac.newTransformer(ssXsl);
-
 				trans.transform(ssXml, new StreamResult(output));
 			}
 			else
@@ -140,6 +143,7 @@ public class ConverterXsl
 		catch (TransformerConfigurationException e)
 		{
 			log.error(e);
+			e.printStackTrace();
 			throw new ConvertXslException(e.getMessage());
 		}
 		catch (TransformerFactoryConfigurationError e)
