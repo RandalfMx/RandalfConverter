@@ -14,7 +14,6 @@ import java.util.UUID;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
 import org.quartz.SchedulerException;
@@ -24,6 +23,7 @@ import mx.randalf.converter.xls2Xml.quartz.GenMag;
 import mx.randalf.converterxls2xml.Input.Image;
 import mx.randalf.converterxls2xml.Xls2Xml;
 import mx.randalf.quartz.QuartzTools;
+import mx.randalf.quartz.job.JobExecute;
 
 /**
  * @author massi
@@ -219,7 +219,7 @@ public class FileFilterTsv extends FileFilterMaster {
 				myClass = GenMag.class;
 			}
 			if (myClass != null){
-				jobKey = QuartzTools.startJob(context.getScheduler(), (Class<? extends Job>) myClass, 
+				jobKey = QuartzTools.startJob(context.getScheduler(), (Class<? extends JobExecute>) myClass, 
 						context.getJobDetail().getKey().getGroup()+"."+ 
 						context.getJobDetail().getKey().getName(), 
 						key,

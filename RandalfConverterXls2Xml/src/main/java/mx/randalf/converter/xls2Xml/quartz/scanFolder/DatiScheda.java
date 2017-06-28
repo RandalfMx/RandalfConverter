@@ -4,6 +4,7 @@
 package mx.randalf.converter.xls2Xml.quartz.scanFolder;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
@@ -11,8 +12,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.im4java.core.IM4JavaException;
-import org.jfree.util.Log;
 import org.purl.dc.elements._1.SimpleLiteral;
 import org.quartz.JobExecutionException;
 
@@ -40,6 +41,8 @@ import mx.randalf.tools.exception.UtilException;
  *
  */
 public class DatiScheda {
+
+	private Logger log = Logger.getLogger(DatiScheda.class);
 
 	private String cartella = null;
 
@@ -178,6 +181,8 @@ public class DatiScheda {
 					col= Utility.convertMese(new Integer(col.trim()));
 				} else if (converter.equals("romano")){
 					col=Utility.converti(col)+"";
+				} else if (converter.equals("copia")){
+					col=(col.trim().equals("0")?"Originale":"Copia");
 				}
 			}
 			if (decimalFormat != null){
@@ -244,6 +249,9 @@ public class DatiScheda {
 					testo+=numPagina;
 				}
 			} else if (campo.getTipo().equals("rectoVerso")){
+				if (rectoVerso == null){
+					rectoVerso = "r";
+				}
 				testo += rectoVerso.toLowerCase();
 				rectoVerso =(rectoVerso.equalsIgnoreCase("r")?"v":"r");
 			} else if (campo.getTipo().equals("numPaginaRomano")){
@@ -427,6 +435,12 @@ public class DatiScheda {
 		compile(bib.getCreator(),"autore");
 		compile(bib.getTitle(),"titolo");
 		compile(bib.getPublisher(),"pubblicazione");
+		compile(bib.getFormat(),"formato");
+		compile(bib.getDescription(),"descrizione");
+		compile(bib.getDate(),"data");
+		compile(bib.getSource(),"source");
+		compile(bib.getRelation(),"relation");
+		compile(bib.getCoverage(),"coverage");
 
 		biblioteca = getCampo("biblioteca");
 		collocazione = getCampo("collocazione");
@@ -503,9 +517,30 @@ public class DatiScheda {
 
 	public Img genImg(Image inputImage, int numImgInput, File folderOutput, 
 			int numImgOutput) throws JobExecutionException{
+		File fImgInput = null;
+
+		fImgInput = getFileImageInput(inputImage, numImgInput);
+		return genImg(inputImage, fImgInput, folderOutput, 
+				numImgOutput);
+	}
+
+	public Img genImg(Image inputImage, String fImg, File folderOutput, 
+			int numImgOutput) throws JobExecutionException{
+		File fImgInput = null;
+		String pFile = null;
+		
+		pFile = inputImage.getPath()+
+				File.separator+fImg;
+
+		fImgInput = new File(pFile);
+		return genImg(inputImage, fImgInput, folderOutput, 
+				numImgOutput);
+	}
+
+	private Img genImg(Image inputImage, File fImgInput, File folderOutput, 
+			int numImgOutput) throws JobExecutionException{
 		Img img = null;
 		Altimg altImg = null;
-		File fImgInput = null;
 		String nomenclatura = null;
 		Link file = null;
 		File pathOutput = null;
@@ -515,7 +550,6 @@ public class DatiScheda {
 		try {
 			convertImg = new ConvertImg(pathImageMagick);
 			img = new Img();
-			fImgInput = getFileImageInput(inputImage, numImgInput);
 			nomenclatura = getNomenclatura();
 			img.setNomenclature(nomenclatura.trim());
 			img.setSequenceNumber(new BigInteger(numImgOutput+""));
@@ -556,19 +590,22 @@ public class DatiScheda {
 				}
 			}
 		} catch (UtilException e) {
-			Log.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
+			throw new JobExecutionException(e.getMessage(),e);
+		} catch (FileNotFoundException e) {
+			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(),e);
 		} catch (IOException e) {
-			Log.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(),e);
 		} catch (NumberFormatException e) {
-			Log.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(),e);
 		} catch (InterruptedException e) {
-			Log.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(),e);
 		} catch (IM4JavaException e) {
-			Log.error(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(),e);
 		}
 		return img;

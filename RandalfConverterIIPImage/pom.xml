@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>mx.randalf.mag</groupId>
 			<artifactId>RandalfMag</artifactId>
-			<version>1.0.12</version>
+			<version>1.0.16</version>
 		</dependency>
 		<dependency>
 			<groupId>mx.randalf.configuration</groupId>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>mx.teca2015.tecaPublished.standAlone</groupId>
 			<artifactId>TecaPublishStandAlone</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.im4java</groupId>
@@ -51,5 +51,5 @@
 			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 </project>

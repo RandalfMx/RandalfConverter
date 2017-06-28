@@ -6,7 +6,6 @@ package mx.randalf.converter.xls2Xml.quartz;
 import java.io.File;
 
 import org.apache.log4j.Logger;
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.SchedulerException;
@@ -19,12 +18,13 @@ import mx.randalf.converter.xls2Xml.quartz.scanFolder.FileFilterXls;
 import mx.randalf.converterxls2xml.Input;
 import mx.randalf.converterxls2xml.Xls2Xml;
 import mx.randalf.quartz.QuartzTools;
+import mx.randalf.quartz.job.JobExecute;
 
 /**
  * @author massi
  *
  */
-public class ScanFileSystem implements Job {
+public class ScanFileSystem extends JobExecute {
 
 	private Logger log = Logger.getLogger(ScanFileSystem.class);
 
@@ -42,13 +42,13 @@ public class ScanFileSystem implements Job {
 	public ScanFileSystem() {
 	}
 
+
 	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
+	protected String jobExecute(JobExecutionContext context) throws JobExecutionException {
 		Xls2Xml x2x = null;
 		Integer numberInput = 0;
-
+		String msg = null;
 		try {
-			if (QuartzTools.checkJob(context)){
 				x2x = (Xls2Xml) context.getJobDetail().getJobDataMap().get(XLS2XML);
 				numberInput = (Integer) context.getJobDetail().getJobDataMap().get(NUMBERINPUT);
 				
@@ -64,8 +64,10 @@ public class ScanFileSystem implements Job {
 				scanFolder(new File(input.getPath()), context);
 				System.out.println("["+QuartzTools.getName(context)+"] Fine analisi cartella: "+input.getPath());
 				filter.closedAllThread();
-				System.out.println("["+QuartzTools.getName(context)+"] Fine analisi cartella: "+input.getPath()+" TUTTO I JOBS TERMINATI");
-			}
+				System.out.println("["+QuartzTools.getName(context)+"] Fine analisi cartella: "+input.getPath()+" TUTTI I JOBS TERMINATI");
+				msg = "Fine analisi cartella: "+input.getPath()+" TUTTI I JOBS TERMINATI";
+		} catch (JobExecutionException e) {
+			throw e;
 		} catch (SchedulerException e) {
 			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(), e);
@@ -76,6 +78,7 @@ public class ScanFileSystem implements Job {
 			log.error(e.getMessage(), e);
 			throw new JobExecutionException(e.getMessage(), e);
 		}
+		return msg;
 	}
 
 	private void scanFolder(File folder, JobExecutionContext context) throws RandalfConvertXls2XmlException{

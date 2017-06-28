@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>mx.randalf.quartz</groupId>
 			<artifactId>RandalfQuartzCore</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>xml-apis</groupId>
@@ -44,12 +44,13 @@
 		<dependency>
 			<groupId>mx.randalf.mag</groupId>
 			<artifactId>RandalfMag</artifactId>
-			<version>1.0.12</version>
+			<version>1.0.15</version>
 		</dependency>
 		<dependency>
 			<groupId>mx.randalf.tools</groupId>
 			<artifactId>RandalfTools</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.8</version>
 		</dependency>
 	</dependencies>
+	<version>1.0.2</version>
 </project>

@@ -28,4 +28,10 @@
     <appender-ref ref="STDOUT"/>
     <appender-ref ref="STDERR"/>
   </category>
+  
+  <root>
+    <level value="INFO"/>
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="STDERR"/>
+  </root>
 </log4j:configuration>

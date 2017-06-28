@@ -59,6 +59,11 @@ public class GenMag implements Job {
 
 		try {
 			if (QuartzTools.checkJob(context)){
+				System.out.println("Processo: +"+
+						context.getJobDetail().getKey().getGroup()+" => "+
+						context.getJobDetail().getKey().getName()+" => "+
+						context.getTrigger().getKey().getGroup()+" => "+
+						context.getTrigger().getKey().getName()+" START");
 
 				inputImage = (Image) context.getJobDetail().getJobDataMap().get(INPUTIMAGE);
 				folderOutput = (File) context.getJobDetail().getJobDataMap().get(FOLDEROUTPUT);
@@ -74,26 +79,80 @@ public class GenMag implements Job {
 				if (!fMagCert.exists()){
 					System.out.println("["+QuartzTools.getName(context)+"] Genero il file: "+fMag.getAbsolutePath());
 					for (int x=0; x<datiScheda.size(); x++){
-						
-						for(int y=new Integer(datiScheda.get(x).getpStart()).intValue(); y<=new Integer(datiScheda.get(x).getpStop()); y++){
+						if (datiScheda.get(x).getpStart().trim().endsWith(".tif") &&
+								datiScheda.get(x).getpStop().trim().endsWith(".tif")){
 							numImgOutput ++;
-							img = datiScheda.get(x).genImg(inputImage, y, folderOutput, numImgOutput);
+							img = datiScheda.get(x).genImg(inputImage, datiScheda.get(x).getpStart().trim(), 
+									folderOutput, numImgOutput);
 							magXsd.calcImg(img, fMag.getParentFile().getAbsolutePath());
 							mag.getImg().add(img);
 							datiScheda.get(x).addNumPagina();
+
+							numImgOutput ++;
+							img = datiScheda.get(x).genImg(inputImage, datiScheda.get(x).getpStop().trim(), 
+									folderOutput, numImgOutput);
+							magXsd.calcImg(img, fMag.getParentFile().getAbsolutePath());
+							mag.getImg().add(img);
+							datiScheda.get(x).addNumPagina();
+
+						} else {
+							for(int y=new Integer(datiScheda.get(x).getpStart()).intValue(); 
+									y<=new Integer(datiScheda.get(x).getpStop()); 
+									y++){
+								numImgOutput ++;
+								img = datiScheda.get(x).genImg(inputImage, y, folderOutput, numImgOutput);
+								magXsd.calcImg(img, fMag.getParentFile().getAbsolutePath());
+								mag.getImg().add(img);
+								datiScheda.get(x).addNumPagina();
+							}
 						}
 					}
 					magXsd.write(mag, fMag);
+					context.setResult("Il file ["+fMag.getAbsolutePath()+"] elaborato");
+				} else {
+					System.out.println("Il file ["+fMagCert.getAbsolutePath()+"] già elaborato");
+					context.setResult("Il file ["+fMagCert.getAbsolutePath()+"] già elaborato");
 				}
+				System.out.println("Processo: +"+
+						context.getJobDetail().getKey().getGroup()+" => "+
+						context.getJobDetail().getKey().getName()+" => "+
+						context.getTrigger().getKey().getGroup()+" => "+
+						context.getTrigger().getKey().getName()+" END");
+				JobExecutionException e =
+						new JobExecutionException();
+				e.setUnscheduleAllTriggers(true);
+				throw e;
+
+			} else {
+				System.out.println("Processo: +"+
+						context.getJobDetail().getKey().getGroup()+" => "+
+						context.getJobDetail().getKey().getName()+" => "+
+						context.getTrigger().getKey().getGroup()+" => "+
+						context.getTrigger().getKey().getName()+" già in lavorazione");
+//				JobExecutionException e =
+//						new JobExecutionException("Processo: +"+
+//						context.getJobDetail().getKey().getGroup()+" => "+
+//						context.getJobDetail().getKey().getName()+" => "+
+//						context.getTrigger().getKey().getGroup()+" => "+
+//						context.getTrigger().getKey().getName()+" già in lavorazione");
+//				e.setUnscheduleAllTriggers(true);
+//				throw e;
 			}
 		} catch (JobExecutionException e) {
+			e.setUnscheduleAllTriggers(true);
 			throw e;
 		} catch (SchedulerException e) {
 			log.error(e.getMessage(), e);
-			throw new JobExecutionException(e.getMessage(), e);
+			JobExecutionException e1 =
+					new JobExecutionException(e.getMessage(), e);
+			e1.setUnscheduleAllTriggers(true);
+			throw e1;
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
-			throw new JobExecutionException(e.getMessage(), e);
+			JobExecutionException e1 =
+					new JobExecutionException(e.getMessage(), e);
+			e1.setUnscheduleAllTriggers(true);
+			throw e1;
 		}
 	}
 }

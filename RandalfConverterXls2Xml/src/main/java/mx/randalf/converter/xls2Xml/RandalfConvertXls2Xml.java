@@ -72,8 +72,8 @@ public class RandalfConvertXls2Xml extends QuartzMaster {
 		try {
 			x2xx = new Xls2XmlXsd();
 			x2x = x2xx.read(fileConfig);
-			setnThread(x2x.getParameter().getNThread().intValue());
-			settSleep(x2x.getParameter().getTSleep().intValue());
+//			setnThread(x2x.getParameter().getNThread().intValue());
+//			settSleep(x2x.getParameter().getTSleep().intValue());
 			if (x2x.getParameter().getTSleepClosed() != null){
 				settSleepClosed(x2x.getParameter().getTSleepClosed().intValue());
 			}

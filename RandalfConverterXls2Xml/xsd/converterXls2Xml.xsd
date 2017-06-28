@@ -172,6 +172,12 @@
                                                   <enumeration value="part_number"/>
                                                   <enumeration value="part_name"/>
                                                   <enumeration value="stpiece_vol"/>
+                                                  <enumeration value="formato"/>
+                                                  <enumeration value="descrizione"/>
+                                                  <enumeration value="data"/>
+                                                  <enumeration value="source"/>
+                                                  <enumeration value="relation"/>
+                                                  <enumeration value="coverage"/>
                                                 </restriction>
                                             </simpleType>
                                         </attribute>
@@ -332,6 +338,7 @@
                             <documentation xml:lang="it">Converte il testo dal formato Romano in Arabo</documentation>
                         </annotation>
                     </enumeration>
+                    <enumeration value="copia"/>
                 </restriction>
             </simpleType>
         </attribute>
