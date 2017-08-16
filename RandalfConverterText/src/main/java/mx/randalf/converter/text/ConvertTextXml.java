@@ -131,6 +131,11 @@ class ConvertTextXml {
 			setAttribute(tagXml, key, Integer.toString(value), obbligatorio);
 	}
 
+	public void addChildElement(MessageElement tagXml, ArrayList<MessageElement> nodes, String key,
+			int value) throws SOAPException {
+		addChildElement(tagXml, nodes, key, value+"", "", "", false, false);
+	}
+
 	/**
 	 * Questo metodo viene utilizzato per valorizzare un singolo nodo
 	 * 
