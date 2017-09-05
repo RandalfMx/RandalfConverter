@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>mx.randalf.converter</groupId>
-    <artifactId>RandalfConverter</artifactId>
-    <version>1.0.0</version>
-  </parent>
-  <groupId>mx.randalf.converter.IIPImage</groupId>
-  <artifactId>RandalfConverterIIPImage</artifactId>
-  <description>Liberie pr la conversione delle immagini TIFF in TIFF piramidali per il visualizzatore IIPImage le informazioni vengono ricavare da un Mag esistente</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>mx.randalf.converter</groupId>
+		<artifactId>RandalfConverter</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>mx.randalf.converter.IIPImage</groupId>
+	<artifactId>RandalfConverterIIPImage</artifactId>
+	<description>Liberie pr la conversione delle immagini TIFF in TIFF piramidali per il visualizzatore IIPImage le informazioni vengono ricavare da un Mag esistente</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -43,7 +44,7 @@
 		<dependency>
 			<groupId>mx.teca2015.tecaPublished.standAlone</groupId>
 			<artifactId>TecaPublishStandAlone</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.im4java</groupId>
@@ -51,5 +52,44 @@
 			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>mx.randalf.converter.IIPImage.batch.RandalfConverterIIPImageBatch</mainClass>
+						</manifest>
+					</archive>
+					<finalName>RandalfConverterIIPImage</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
