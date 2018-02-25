@@ -87,7 +87,7 @@ public class ConverterXsl
 		}
 		catch (FileNotFoundException e)
 		{
-			log.error(e);
+			log.error(e.getMessage(), e);
 			throw new ConvertXslException(e.getMessage());
 		}
 		finally
@@ -104,7 +104,7 @@ public class ConverterXsl
 			}
 			catch (IOException e)
 			{
-				log.error(e);
+				log.error(e.getMessage(), e);
 				throw new ConvertXslException(e.getMessage());
 			}
 		}
@@ -121,13 +121,13 @@ public class ConverterXsl
 
 		try
 		{
-			log.debug("convertXsl(String fileXsl, InputStream input, OutputStream output) throws ConvertXslException");
+			log.debug("\n"+"convertXsl(String fileXsl, InputStream input, OutputStream output) throws ConvertXslException");
 			fXsl = new File(fileXsl);
 
-			log.debug("File Xls: "+fileXsl);
+			log.debug("\n"+"File Xls: "+fileXsl);
 			if (fXsl.exists())
 			{
-				log.debug("File Xls trovato");
+				log.debug("\n"+"File Xls trovato");
 				ssXml = new StreamSource(input);
 				ssXsl = new StreamSource(fXsl);
 
@@ -138,22 +138,21 @@ public class ConverterXsl
 			}
 			else
 				throw new ConvertXslException("Il file "+fXsl.getAbsolutePath()+" non \u00E8 presente.");
-			log.debug("convertXsl Fine");
+			log.debug("\n"+"convertXsl Fine");
 		}
 		catch (TransformerConfigurationException e)
 		{
-			log.error(e);
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 			throw new ConvertXslException(e.getMessage());
 		}
 		catch (TransformerFactoryConfigurationError e)
 		{
-			log.error(e);
+			log.error(e.getMessage(), e);
 			throw new ConvertXslException(e.getMessage());
 		}
 		catch (TransformerException e)
 		{
-			log.error(e);
+			log.error(e.getMessage(), e);
 			throw new ConvertXslException(e.getMessage());
 		}
 	}

@@ -89,10 +89,11 @@ class ConvertTextXml {
 			MagException mExc = new MagException("L'attributo [" + key
 					+ "] \u00E8 obbligatorio", MagException.FATALERROR,
 					MagException.OBBERROR, sezione);
-			if (iMagException != null)
+			if (iMagException != null) {
 				iMagException.add(mExc);
-			else
-				System.err.println(mExc.toString());
+			} else {
+				log.error("\n"+mExc.toString());
+			}
 		}
 	}
 
@@ -320,12 +321,8 @@ class ConvertTextXml {
 		if ((value != null && (!value.equals("")))
 				|| ((valueAttr != null) && (valueAttr.size() > 0))) {
 			nodes.add(new MessageElement());
-			log.debug("Key : " + key);
+			log.debug("\n"+"Key : " + key);
 			((MessageElement) nodes.get(nodes.size() - 1)).setName(key);
-			// ((MessageElement) nodes.get(nodes.size() -
-			// 1)).setEncodingStyle("UTF-8");
-			// System.out.println("Stato UTF-8: "+((MessageElement)
-			// nodes.get(nodes.size() - 1)).getEncodingStyle());
 			if (value != null && (!value.equals("")))
 				setValue((MessageElement) nodes.get(nodes.size() - 1), value);
 			else if (obbligatorio) {
@@ -349,8 +346,9 @@ class ConvertTextXml {
 					MagException.OBBERROR, sezione);
 			if (iMagException != null)
 				iMagException.add(mExc);
-			else
-				System.err.println(mExc.toString());
+			else {
+				log.error("\n"+mExc.toString());
+			}
 		}
 
 	}
@@ -470,8 +468,9 @@ class ConvertTextXml {
 					MagException.OBBERROR, sezione);
 			if (iMagException != null)
 				iMagException.add(mExc);
-			else
-				System.err.println(mExc.toString());
+			else {
+				log.error("\n"+mExc.toString());
+			}
 		}
 
 	}
@@ -497,32 +496,32 @@ class ConvertTextXml {
 	 */
 	protected String convert(String testo) {
 		String ris = "";
-		log.debug("Convert XML: " + testo);
+		log.debug("\n"+"Convert XML: " + testo);
 		byte[] utf8;
-		log.debug("Convert XML: " + isConvertText());
+		log.debug("\n"+"Convert XML: " + isConvertText());
 		if (isConvertText()) {
 			try {
-				log.debug("Prima convert: " + testo);
+				log.debug("\n"+"Prima convert: " + testo);
 				utf8 = testo.getBytes(charsetName);
 				ris = new String(utf8);
-				log.debug("Dopo convert: " + ris);
+				log.debug("\n"+"Dopo convert: " + ris);
 			} catch (UnsupportedEncodingException e) {
-				log.error(e);
+				log.error(e.getMessage(), e);
 			}
 		} else
 			ris = testo;
 		if (isConvertTextISO8859()) {
 			try {
-				log.debug("Prima convert: " + testo);
+				log.debug("\n"+"Prima convert: " + testo);
 				utf8 = testo.getBytes();
 				ris = new String(utf8, charsetName);
-				log.debug("Dopo convert: " + ris);
+				log.debug("\n"+"Dopo convert: " + ris);
 			} catch (UnsupportedEncodingException e) {
-				log.error(e);
+				log.error(e.getMessage(),e);
 			}
 		} else
 			ris = testo;
-		log.debug("Convert XML: " + ris);
+		log.debug("\n"+"Convert XML: " + ris);
 		return ris;
 
 	}
@@ -535,10 +534,10 @@ class ConvertTextXml {
 	public String toString(String testo) {
 		byte[] bUtf8;
 		try {
-			log.debug("Prima: " + testo);
+			log.debug("\n"+"Prima: " + testo);
 			bUtf8 = testo.getBytes();
 			testo = new String(bUtf8, charsetName);
-			log.debug("Dopo: " + testo);
+			log.debug("\n"+"Dopo: " + testo);
 		} catch (UnsupportedEncodingException e) {
 			MagException magException = new MagException(
 					"Problemi nella conversione del testo UTF-8 [" + testo
@@ -546,10 +545,11 @@ class ConvertTextXml {
 					MagException.URIERROR, sezione);
 			if (iMagException != null)
 				iMagException.add(magException);
-			else
-				System.err.println(magException.toString());
+			else {
+				log.error("\n"+magException.toString());
+			}
 		} catch (Exception e) {
-			log.error(e);
+			log.error(e.getMessage(),e);
 		}
 		return testo;
 	}

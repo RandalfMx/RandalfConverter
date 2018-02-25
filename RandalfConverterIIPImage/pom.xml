@@ -42,17 +42,17 @@
 			<version>1.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>mx.teca2015.tecaPublished.standAlone</groupId>
-			<artifactId>TecaPublishStandAlone</artifactId>
-			<version>1.0.3</version>
-		</dependency>
-		<dependency>
 			<groupId>org.im4java</groupId>
 			<artifactId>im4java</artifactId>
 			<version>1.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>mx.randalf.tools</groupId>
+			<artifactId>RandalfTools</artifactId>
+			<version>1.0.8</version>
+		</dependency>
 	</dependencies>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<build>
 		<plugins>
 			<plugin>

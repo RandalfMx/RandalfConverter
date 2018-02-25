@@ -467,7 +467,7 @@ public class SpeChar
 		}
 		catch (Exception Exc)
 		{
-			log.error(Exc);
+			log.error(Exc.getMessage(), Exc);
 		}
 		/*
 		 * finally { Risulta = togliSpazi(Risulta); }
@@ -494,7 +494,7 @@ public class SpeChar
 		}
 		catch (Exception Exc)
 		{
-			log.error(Exc);
+			log.error(Exc.getMessage(), Exc);
 		}
 		return testo;
 	}
@@ -515,7 +515,7 @@ public class SpeChar
 		}
 		catch (Exception Exc)
 		{
-			log.error(Exc);
+			log.error(Exc.getMessage(), Exc);
 		}
 		return testo;
 	}
@@ -537,7 +537,7 @@ public class SpeChar
 		}
 		catch (Exception exc)
 		{
-			log.error(exc);
+			log.error(exc.getMessage(), exc);
 		}
 		return Frase;
 	}
@@ -564,7 +564,7 @@ public class SpeChar
 		}
 		catch (Exception exc)
 		{
-			log.error(exc);
+			log.error(exc.getMessage(), exc);
 		}
 		return Frase;
 	}
@@ -596,7 +596,7 @@ public class SpeChar
 		}
 		catch (Exception exc)
 		{
-			log.error(exc);
+			log.error(exc.getMessage(), exc);
 		}
 		return Risulta.trim();
 	}
@@ -651,7 +651,7 @@ public class SpeChar
 		}
 		catch (Exception exc)
 		{
-			log.error(exc);
+			log.error(exc.toString(), exc);
 		}
 		return Risulta;
 	}
@@ -671,7 +671,7 @@ public class SpeChar
 		}
 		catch (Exception exc)
 		{
-			log.error(exc);
+			log.error(exc.getMessage(), exc );
 		}
 		return testo.toUpperCase();
 	}

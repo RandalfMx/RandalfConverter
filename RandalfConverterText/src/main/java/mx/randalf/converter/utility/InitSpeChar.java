@@ -652,7 +652,7 @@ class InitSpeChar
 		{
 			for (int x = 0; x < initSpeChar.length; x++)
 			{
-				log.debug(initSpeChar[x][0]);
+				log.debug("\n"+initSpeChar[x][0]);
 				testo = testo.replace(initSpeChar[x][0], initSpeChar[x][1]);
 			}
 			ris += testo;
