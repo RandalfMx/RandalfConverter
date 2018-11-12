@@ -25,9 +25,9 @@ public class RandalfConverterIIPImageBatch {
 
 	private String pathImageMagick = null;
 
-	private String ext = null;
+	protected String ext = null;
 
-	private String level = null;
+	protected String level = null;
 	
 	public RandalfConverterIIPImageBatch(String pathImageMagick, String tipologiaMateriale) {
 		this.pathImageMagick = pathImageMagick;
@@ -215,7 +215,7 @@ public class RandalfConverterIIPImageBatch {
 		}
 	}
 
-	private Altimg updateImg(String hrefFile) {
+	protected Altimg updateImg(String hrefFile) {
 		Altimg altimg = null;
 		Link file = null;
 		
@@ -227,7 +227,7 @@ public class RandalfConverterIIPImageBatch {
 		return altimg;
 	}
 
-	private void convert(File fImgInput, File fImgOutput) throws RandalfConverterIIPImageException {
+	protected void convert(File fImgInput, File fImgOutput) throws RandalfConverterIIPImageException {
 		RandalfConverterIIPImage tecaGenIIPImage = null;
 		
 		try {
@@ -244,7 +244,7 @@ public class RandalfConverterIIPImageBatch {
 		}
 	}
 
-	private Link getFile(Img img, String usage){
+	protected Link getFile(Img img, String usage){
 		Link result = null;
 
 		if (img.getUsage().get(0).equals(usage)){
@@ -260,7 +260,7 @@ public class RandalfConverterIIPImageBatch {
 		return result;
 	}
 
-	private boolean checkUsage(Img img, String usage){
+	protected boolean checkUsage(Img img, String usage){
 		boolean result = false;
 
 		if (img.getUsage().get(0).equals(usage)){
