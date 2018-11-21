@@ -34,7 +34,7 @@
 		<dependency>
 			<groupId>mx.randalf.mag</groupId>
 			<artifactId>RandalfMag</artifactId>
-			<version>1.0.19</version>
+			<version>1.0.20</version>
 		</dependency>
 		<dependency>
 			<groupId>mx.randalf.configuration</groupId>
@@ -49,10 +49,10 @@
 		<dependency>
 			<groupId>mx.randalf.tools</groupId>
 			<artifactId>RandalfTools</artifactId>
-			<version>1.0.8</version>
+			<version>1.0.9</version>
 		</dependency>
 	</dependencies>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<build>
 		<plugins>
 			<plugin>
