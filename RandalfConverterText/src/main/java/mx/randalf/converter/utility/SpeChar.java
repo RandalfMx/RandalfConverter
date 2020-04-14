@@ -3,7 +3,8 @@ package mx.randalf.converter.utility;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SpeChar
 {
@@ -11,7 +12,7 @@ public class SpeChar
 	/**
 	 * Questa variabile viene utilizzata per loggare l'applicazione
 	 */
-	private Logger log = Logger.getLogger(SpeChar.class);
+	private Logger log = LogManager.getLogger(SpeChar.class);
 
 	/**
 	 * In questa variabile vengono registrate le informazioni per la conversione

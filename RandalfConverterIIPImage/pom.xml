@@ -34,12 +34,12 @@
 		<dependency>
 			<groupId>mx.randalf.mag</groupId>
 			<artifactId>RandalfMag</artifactId>
-			<version>1.0.27</version>
+			<version>1.0.28</version>
 		</dependency>
 		<dependency>
 			<groupId>mx.randalf.configuration</groupId>
 			<artifactId>RandalfConfiguration</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.im4java</groupId>
@@ -52,7 +52,7 @@
 			<version>1.0.9</version>
 		</dependency>
 	</dependencies>
-	<version>1.0.10</version>
+	<version>1.0.11</version>
 	<!-- 
 	<build>
 		<plugins>

@@ -5,7 +5,8 @@ package mx.randalf.converter.utility;
 
 import java.util.Hashtable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Questa classe viene utilizzata per la inizializzazione delle variabili
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
 class InitSpeChar
 {
 
-	private Logger log = Logger.getLogger(InitSpeChar.class);
+	private Logger log = LogManager.getLogger(InitSpeChar.class);
 
 	/**
 	 * Questa variabile viene utilizzata per indicare la lista dei caratteri
