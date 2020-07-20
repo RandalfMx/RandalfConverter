@@ -10,8 +10,7 @@ import mx.randalf.interfacException.exception.MagException;
 import mx.randalf.interfacException.interfacce.IMagException;
 
 import org.apache.axis.message.MessageElement;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.w3c.dom.Node;
 
 /**
@@ -26,7 +25,7 @@ class ConvertTextXml {
 	/**
 	 * Questa variabile viene utilizzata per loggare l'applicazione
 	 */
-	private static Logger log = LogManager.getLogger(ConvertTextXml.class);
+	private static Logger log = Logger.getLogger(ConvertTextXml.class);
 
 	/**
 	 * Questa variabile viene utilizzato per indicare se eseguire la conversione
