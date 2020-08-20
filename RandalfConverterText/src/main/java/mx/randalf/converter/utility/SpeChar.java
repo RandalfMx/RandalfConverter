@@ -619,10 +619,10 @@ public class SpeChar
 			testo = sbn2Unicode.convertString(testo);
 			for (x = 0; x < testo.length(); x++)
 			{
-				valore = new Character(testo.charAt(x)).hashCode();
+				valore = Character.valueOf(testo.charAt(x)).hashCode(); // new Character(testo.charAt(x)).hashCode();
 				if (valore == 194)
 				{
-					valore2 = new Character(testo.charAt(x + 1)).hashCode();
+					valore2 = Character.valueOf(testo.charAt(x + 1)).hashCode(); // new Character(testo.charAt(x + 1)).hashCode();
 					if (valore2 == 710)
 						x++;
 					else if (valore2 == 8240)

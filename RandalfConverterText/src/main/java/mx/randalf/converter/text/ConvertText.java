@@ -26,7 +26,8 @@ public class ConvertText {
 
 		segnatura = segnatura.toUpperCase();
 		for (int x = 0; x < segnatura.length(); x++) {
-			myChar = new Character(segnatura.charAt(x));
+			myChar = Character.valueOf(segnatura.charAt(x));
+			//new Character(segnatura.charAt(x));
 			nChar = myChar.hashCode();
 			if ((nChar > 64 && nChar < 91) || nChar == 95 || nChar == 45) {
 				if (!numero.equals(""))
