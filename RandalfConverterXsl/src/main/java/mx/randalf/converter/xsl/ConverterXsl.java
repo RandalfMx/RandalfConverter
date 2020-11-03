@@ -17,8 +17,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import mx.randalf.converter.xsl.exception.ConvertXslException;
 
@@ -34,7 +33,7 @@ public class ConverterXsl
 	/**
 	 * Questa variabile viene utilizzata per loggare le applicazioni
 	 */
-	private static Logger log = LogManager.getLogger(ConverterXsl.class);
+	private static Logger log = Logger.getLogger(ConverterXsl.class);
 
 	public static void main(String[] args)
 	{
