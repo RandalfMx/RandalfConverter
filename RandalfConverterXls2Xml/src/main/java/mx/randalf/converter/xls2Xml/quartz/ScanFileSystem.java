@@ -5,7 +5,6 @@ package mx.randalf.converter.xls2Xml.quartz;
 
 import java.io.File;
 
-import org.apache.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.SchedulerException;
@@ -20,13 +19,17 @@ import mx.randalf.converterxls2xml.Xls2Xml;
 import mx.randalf.quartz.QuartzTools;
 import mx.randalf.quartz.job.JobExecute;
 
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author massi
  *
  */
 public class ScanFileSystem extends JobExecute {
 
-	private Logger log = Logger.getLogger(ScanFileSystem.class);
+	private Logger log = LogManager.getLogger(ScanFileSystem.class);
 
 	public static String XLS2XML = "xls2Xml";
 

@@ -6,7 +6,10 @@ package mx.randalf.converter.xls2Xml;
 import java.io.File;
 import java.util.Hashtable;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.quartz.JobKey;
 import org.quartz.SchedulerException;
 
@@ -24,7 +27,7 @@ import mx.randalf.xsd.exception.XsdException;
  */
 public class RandalfConvertXls2Xml extends QuartzMaster {
 
-	private Logger log = Logger.getLogger(RandalfConvertXls2Xml.class);
+	private Logger log = LogManager.getLogger(RandalfConvertXls2Xml.class);
 
 	/**
 	 * @throws RandalfConvertXls2XmlException 

@@ -2,14 +2,15 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>mx.randalf.converter</groupId>
   <artifactId>RandalfConverter</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version><!-- 1.0.0 -->
   <packaging>pom</packaging>
   <modules>
-  	<module>RandalfConverterIIPImage</module>
+	<module>RandalfConverterIIPImage</module>
   	<module>RandalfConverterText</module>
   	<module>RandalfConverterXls2Xml</module>
   	<module>RandalfConverterXsl</module>
   </modules>
+  <!-- 
     <distributionManagement>
     <repository>
         <id>mvn-bncf</id>
@@ -17,4 +18,5 @@
         <url>http://maven.bncf.firenze.sbn.it/artifactory/libs-release-local</url>
     </repository>
 </distributionManagement>	
+ -->    
 </project>

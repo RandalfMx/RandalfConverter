@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+
 import org.im4java.process.ProcessStarter;
 
 import it.sbn.iccu.metaag1.Img;
@@ -19,9 +19,15 @@ import mx.randalf.tools.Utils;
 import mx.randalf.tools.exception.UtilException;
 import mx.randalf.xsd.exception.XsdException;
 
+// 21/12/2021 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class RandalfConverterIIPImageBatch {
 
-	private Logger log = Logger.getLogger(RandalfConverterIIPImageBatch.class);
+//	private Logger log = Logger.getLogger(RandalfConverterIIPImageBatch.class);
+	private Logger log = LogManager.getLogger(RandalfConverterIIPImageBatch.class);
 
 	private String pathImageMagick = null;
 
@@ -172,7 +178,9 @@ public class RandalfConverterIIPImageBatch {
 						throw new RandalfConverterIIPImageException("Problemi nella cancellazione del file ["+fCert.getAbsolutePath()+"]");
 					}
 				}
-				if (magXsd.write(mag, fi)){
+//				if (magXsd.write(mag, fi)){
+// Argentino 03/01/2022
+if (magXsd.write(mag, fi, true)){
 					fCert = new File(fi.getAbsolutePath()+".cert");
 					if (fCert.exists()){
 						fIip = new File(fi.getAbsolutePath()+"."+ext);
@@ -205,12 +213,16 @@ public class RandalfConverterIIPImageBatch {
 					}
 				}
 				
+				
 			}
 		} catch (XsdException | RandalfConverterIIPImageException e) {
 			log.error(e.getMessage(), e);
-		} catch (PubblicaException e) {
+		} 
+		catch (PubblicaException e) {
 			log.error(e.getMessage(), e);
 		} catch (UtilException e) {
+			log.error(e.getMessage(), e);
+			} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		}
 	}

@@ -4,16 +4,17 @@
 	<parent>
 		<groupId>mx.randalf.converter</groupId>
 		<artifactId>RandalfConverter</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version><!-- 1.0.0 -->
 	</parent>
 	<groupId>mx.randalf.converter.xls2Xml</groupId>
 	<artifactId>RandalfConverterXls2Xml</artifactId>
 	<description>Convertitore dei fogli Excel in Xml Mag o Mets</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source><!-- 1.7 -->
+		<maven.compiler.target>1.8</maven.compiler.target><!-- 1.7 -->
 	</properties>
+<!-- 	
 	<distributionManagement>
 		<repository>
 			<id>mvn-bncf</id>
@@ -30,11 +31,12 @@
 			</snapshots>
 		</repository>
 	</repositories>
+ -->	
 	<dependencies>
 		<dependency>
 			<groupId>mx.randalf.quartz</groupId>
 			<artifactId>RandalfQuartzCore</artifactId>
-			<version>1.0.6</version>
+			<version>2.0.3</version><!-- 1.0.6 -->
 		</dependency>
 		<dependency>
 			<groupId>xml-apis</groupId>
@@ -44,13 +46,18 @@
 		<dependency>
 			<groupId>mx.randalf.mag</groupId>
 			<artifactId>RandalfMag</artifactId>
-			<version>1.0.15</version>
+			<version>2.0.10</version><!-- 1.0.15 -->
 		</dependency>
 		<dependency>
 			<groupId>mx.randalf.tools</groupId>
 			<artifactId>RandalfTools</artifactId>
-			<version>1.0.8</version>
+			<version>2.0.1</version><!-- 1.0.8 -->
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.15.0</version><!-- 2.13.1 -->
+		</dependency>		
 	</dependencies>
-	<version>1.0.2</version>
+	<version>2.0.0</version><!-- 1.0.2 -->
 </project>

@@ -9,44 +9,16 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-<!--
-	<distributionManagement>
-		<repository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>sftp-repository-stable</id>
-			<url>scpexe://maven.bncf.lan/var/www/maven.bncf.lan/repository/release</url>
-			<layout>default</layout>
-		</repository>
-	</distributionManagement>
-	<repositories>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>randalf.mx-release</id>
-			<url>http://maven.bncf.lan/repository/release</url>
-		</repository>
-	</repositories>
-	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh-external</artifactId>
-				<version>1.0-beta-6</version>
-			</extension>
-		</extensions>
-	</build>
--->
 	<dependencies>
 		<dependency>
 			<groupId>mx.randalf.interfacException</groupId>
 			<artifactId>RandalfInterfaceException</artifactId>
-			<version>2.0.0</version>
+			<version>2.0.1</version><!-- 2.0.0 -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.13.1</version>
+			<version>2.15.0</version><!-- 2.13.1 -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.axis</groupId>
@@ -54,6 +26,7 @@
 			<version>1.4</version>
 		</dependency>
 	</dependencies>
+<!-- 	
   <distributionManagement>
     <repository>
         <id>mvn-bncf</id>
@@ -70,10 +43,11 @@
 			</snapshots>
 		</repository>
 	</repositories>
+ -->	
 	<parent>
 		<groupId>mx.randalf.converter</groupId>
 		<artifactId>RandalfConverter</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version><!-- 1.0.0 -->
 	</parent>
-	<version>2.0.0</version>
+	<version>2.0.1</version><!-- 2.0.0 -->
 </project>
