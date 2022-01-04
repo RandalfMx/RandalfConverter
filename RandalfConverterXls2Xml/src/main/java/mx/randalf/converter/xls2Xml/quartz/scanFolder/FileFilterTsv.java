@@ -13,7 +13,10 @@ import java.util.Hashtable;
 import java.util.UUID;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.quartz.JobExecutionContext;
 import org.quartz.JobKey;
 import org.quartz.SchedulerException;
@@ -35,7 +38,7 @@ public class FileFilterTsv extends FileFilterMaster {
 
 	private Hashtable<String, Vector<DatiScheda>> datiBib = null;
 
-	private Logger log = Logger.getLogger(FileFilterTsv.class);
+	private Logger log = LogManager.getLogger(FileFilterTsv.class);
 
 	/**
 	 * @param suffix

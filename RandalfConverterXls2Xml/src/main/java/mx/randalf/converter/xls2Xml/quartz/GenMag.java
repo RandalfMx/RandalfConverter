@@ -6,7 +6,6 @@ package mx.randalf.converter.xls2Xml.quartz;
 import java.io.File;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -19,11 +18,19 @@ import mx.randalf.converterxls2xml.Input.Image;
 import mx.randalf.mag.MagXsd;
 import mx.randalf.quartz.QuartzTools;
 
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author massi
  *
  */
 public class GenMag implements Job {
+
+	private Logger log = LogManager.getLogger(GenMag.class);
 
 	public static String INPUTIMAGE = "inputImage";
 
@@ -33,7 +40,6 @@ public class GenMag implements Job {
 
 	public static String TYPE = "mag";
 
-	private Logger log = Logger.getLogger(GenMag.class);
 
 	/**
 	 * 
@@ -107,7 +113,7 @@ public class GenMag implements Job {
 							}
 						}
 					}
-					magXsd.write(mag, fMag);
+// 21/12/21 Argentino					magXsd.write(mag, fMag);
 					context.setResult("Il file ["+fMag.getAbsolutePath()+"] elaborato");
 				} else {
 					System.out.println("Il file ["+fMagCert.getAbsolutePath()+"] già elaborato");

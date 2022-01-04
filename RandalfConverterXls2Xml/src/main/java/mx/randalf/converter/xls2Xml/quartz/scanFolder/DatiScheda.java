@@ -12,7 +12,10 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.im4java.core.IM4JavaException;
 import org.purl.dc.elements._1.SimpleLiteral;
 import org.quartz.JobExecutionException;
@@ -42,7 +45,7 @@ import mx.randalf.tools.exception.UtilException;
  */
 public class DatiScheda {
 
-	private Logger log = Logger.getLogger(DatiScheda.class);
+	private Logger log = LogManager.getLogger(DatiScheda.class);
 
 	private String cartella = null;
 
